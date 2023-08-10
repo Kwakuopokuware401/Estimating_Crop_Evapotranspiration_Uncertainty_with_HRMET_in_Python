@@ -1,16 +1,31 @@
 import numpy as np
 
-# HRMET model
+# HRMET model to calculate evapotranspiration 
 def hrmet(datetime, longitude, latitude, Tair, SWin, u, ea, pa, LAI, h, T, albSoil, albVeg, emissSoil, emissVeg):
 
-  Rns = (1 - albSoil) * SWin + emissSoil * 5.67e-8 * (T**4 - Tair**4)
+# Net shortwave radiation 
+# Incoming shortwave * (1 - albedo)
+Rns = (1 - albSoil) * SWin  
 
-  G = 0.1 * Rns
-  
-  Rnl = emissVeg * 5.67e-8 * (T**4 - Tair**4)
-  Ra_s = 0.2 * (Rns - G)
-  LvE = 0.1 * LAI * (Rnl - Ra_s)
+# Outgoing longwave radiation
+# Emissivity * Stefan-Boltzmann * (Temp**4 - AirTemp**4) 
++ emissSoil * 5.67e-8 * (T**4 - Tair**4)
 
-  ET_mmHr = LvE * 3600 / (1000 * 2.45)
+# Estimate soil heat flux as fraction of Rns
+G = 0.1 * Rns  
 
-  return ET_mmHr
+# Net longwave radiation
+# Emissivity * Stefan-Boltzmann * (Temp**4 - AirTemp**4)
+Rnl = emissVeg * 5.67e-8 * (T**4 - Tair**4)  
+
+# Aerodynamic resistance term 
+Ra_s = 0.2 * (Rns - G)  
+
+# Latent heat flux 
+# Function of LAI and radiation terms
+LvE = 0.1 * LAI * (Rnl - Ra_s)  
+
+# Convert latent heat flux to ET in mm/hour
+ET_mmHr = LvE * 3600 / (1000 * 2.45)
+
+return ET_mmHr
