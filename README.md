@@ -1,5 +1,8 @@
 # Estimating_Crop_Evapotranspiration_Uncertainty_with_HRMET_in_Python
 
+![working_example_plot](https://github.com/Kwakuopokuware401/Estimating_Crop_Evapotranspiration_Uncertainty_with_HRMET_in_Python/assets/94206249/d0623e0e-686b-49cd-b71e-585682b972d2)
+
+
 Author:  Kwaku Opoku-Ware (kwakuopokuware401@gmail.com)
 
 
@@ -15,7 +18,7 @@ HRMET is a relatively simple point evapotranspiration model that uses a Penman-M
 The core model is implemented in Python based on a translation from the original MATLAB code.
 
 ## Running the model
-The entry point is the Jupyter notebook HRMET_gridded.ipynb. It allows running the model and visualizing outputs.
+The entry point is hrmet.py by setting-up input variables. It allows running the model and visualizing outputs.
 
 The key steps are:
 
@@ -24,6 +27,7 @@ The key steps are:
 -Loop over grid cells, running HRMET at each point
 
 -Generate map of ET estimates
+![Gridded_ET](https://github.com/Kwakuopokuware401/Estimating_Crop_Evapotranspiration_Uncertainty_with_HRMET_in_Python/assets/94206249/21fd5728-9dfa-4e41-947c-dd5e2b91a400)
 
 -Estimate uncertainty in input data (here surface temperature)
 
@@ -42,6 +46,9 @@ The code requires the following Python packages:
 
 ## Applications
 Potential use cases for this modeling approach include:
+
+![Comparing Uncertainty techniques](https://github.com/Kwakuopokuware401/Estimating_Crop_Evapotranspiration_Uncertainty_with_HRMET_in_Python/assets/94206249/1abf2412-0440-469e-9ba1-77c7ca49d488)
+
 
 -Spatial analysis of ET over agricultural fields
 
